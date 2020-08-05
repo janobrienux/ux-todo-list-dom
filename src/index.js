@@ -17,16 +17,30 @@ let todos = [
         description: "Call the caterers"
     }
 ];
-
 function renderTodoApp() {
-    let app = document.querySelector("#app")
-    let h1 = document.createElement("h1")
+    let app = document.querySelector("#app");
+    let h1 = document.createElement("h1");
+    let todoList= document.createElement("ul");
     // your code here
+    h1.innerText = "Todo List";
+    app.appendChild(h1);
+    app.appendChild(todoList);
 
-    h1.innerText = "Todo List"
+    for (let i=0; i < todos.length; i++) {
+        let todoItems = todos[i]
+        let stateOfBox = todoItems.completed ? "checked": "";
+        let todoMarkUp = `
+        <li><input type= "checkbox" ${stateOfBox} >
+    
+        ${todoItems.description}
+        </li>
+        `;
+        todoList.innerHTML += todoMarkUp;
+    }
 
-    app.appendChild(h1)
     // and maybe some here
+ 
+    // app.append(todoListElement)
 }
 
-renderTodoApp()
+renderTodoApp();
